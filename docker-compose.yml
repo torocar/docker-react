@@ -1,0 +1,20 @@
+version: '3'
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000" #local machine : container
+    volumes:
+      - /app/node_modules # maps this container folder with itself (or said otherwise, do not map it to the local machine)
+      - .:/app #local machine : container
+  tests:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    # No need to map ports here. The tests run in isolation in a separate container.
+    volumes:
+      - /app/node_modules # maps this container folder with itself (or said otherwise, do not map it to the local machine)
+      - .:/app #local machine : container
+    command: ["npm", "run", "test"]
