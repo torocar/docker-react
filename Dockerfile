@@ -1,6 +1,6 @@
 # EXAMPLE OF A MULTI-STEP BUILD PROCESS Dockerfile
 
-# BUILD PHASE. "as builder" is a tag to denote that this is for the build phase
+# BUILD PHASE. "builder" is a tag to denote that this is for the build phase
 FROM node:16-alpine AS builder
 WORKDIR '/app'
 COPY package.json .
